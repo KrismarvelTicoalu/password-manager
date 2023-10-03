@@ -34,9 +34,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.passwordList = new System.Windows.Forms.DataGridView();
-            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.username_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteRow = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordList)).BeginInit();
             this.SuspendLayout();
@@ -100,12 +101,12 @@
             this.passwordList.TabIndex = 3;
             this.passwordList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // password
+            // title
             // 
-            this.password.FillWeight = 81.86312F;
-            this.password.HeaderText = "    Password    ";
-            this.password.Name = "password";
-            this.password.Width = 172;
+            this.title.FillWeight = 59.07928F;
+            this.title.HeaderText = "          Title          ";
+            this.title.Name = "title";
+            this.title.Width = 197;
             // 
             // username_email
             // 
@@ -114,18 +115,30 @@
             this.username_email.Name = "username_email";
             this.username_email.Width = 189;
             // 
-            // title
+            // password
             // 
-            this.title.FillWeight = 59.07928F;
-            this.title.HeaderText = "          Title          ";
-            this.title.Name = "title";
-            this.title.Width = 197;
+            this.password.FillWeight = 81.86312F;
+            this.password.HeaderText = "    Password    ";
+            this.password.Name = "password";
+            this.password.Width = 172;
+            // 
+            // deleteRow
+            // 
+            this.deleteRow.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteRow.Location = new System.Drawing.Point(265, 434);
+            this.deleteRow.Name = "deleteRow";
+            this.deleteRow.Size = new System.Drawing.Size(115, 50);
+            this.deleteRow.TabIndex = 7;
+            this.deleteRow.Text = "Delete";
+            this.deleteRow.UseVisualStyleBackColor = true;
+            this.deleteRow.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 437);
+            this.ClientSize = new System.Drawing.Size(656, 496);
+            this.Controls.Add(this.deleteRow);
             this.Controls.Add(this.passwordList);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -150,5 +163,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
         private System.Windows.Forms.DataGridViewTextBoxColumn username_email;
         private System.Windows.Forms.DataGridViewTextBoxColumn password;
+        private System.Windows.Forms.Button deleteRow;
     }
 }

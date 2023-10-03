@@ -48,5 +48,12 @@ namespace PasswordManager_VisPro_Group5
 
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            passwordList.Rows[0].Cells[0].Value = "";
+            passwordList.Rows[0].Cells[1].Value = "";
+            passwordList.Rows[0].Cells[2].Value = "";
+        }
     }
 }
