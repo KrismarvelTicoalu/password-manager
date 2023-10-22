@@ -24,9 +24,55 @@ namespace PasswordManager_VisPro_Group5
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormMain formMain = new FormMain();
-            formMain.Show();
-            this.Hide();
+            if (txtUsernameOrEmail.Text == "avel")
+            {
+                if (txtPassword.Text == "12345")
+                {
+                    FormMain formMain = new FormMain();
+                    formMain.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong password");
+                }
+            }
+            else if (txtPassword.Text == "12345")
+            {
+                if (txtUsernameOrEmail.Text == "avel")
+                {
+                    FormMain formMain = new FormMain();
+                    formMain.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong username or email");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wrong username/email and password");
+            }
+            
+            
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void checkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkShowPassword.Checked == true)
+            {
+                txtPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = true;
+            }
         }
     }
 }
