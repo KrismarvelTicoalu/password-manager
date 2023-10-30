@@ -60,11 +60,11 @@ namespace PasswordManager_VisPro_Group5
                 koneksi.Close();
 
                 tabel_item.DataSource = ds.Tables[0];
-                tabel_item.Columns[0].Width = 200;
+                tabel_item.Columns[0].Width = 150;
                 tabel_item.Columns[0].HeaderText = "Title";
-                tabel_item.Columns[1].Width = 200;
+                tabel_item.Columns[1].Width = 150;
                 tabel_item.Columns[1].HeaderText = "Username/Email";
-                tabel_item.Columns[2].Width = 200;
+                tabel_item.Columns[2].Width = 150;
                 tabel_item.Columns[2].HeaderText = "Password";
             }
             catch (Exception ex)
@@ -92,6 +92,12 @@ namespace PasswordManager_VisPro_Group5
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Delete_item delete_item = new Delete_item();
+            delete_item.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)

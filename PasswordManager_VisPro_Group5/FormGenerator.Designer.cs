@@ -30,14 +30,14 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.length = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.generatedPassword = new System.Windows.Forms.Label();
             this.generatePassword = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.savePassword = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.length)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,18 +63,19 @@
             this.label1.Text = "Your password";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // numericUpDown1
+            // length
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(189, 62);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 29);
-            this.numericUpDown1.TabIndex = 5;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.length.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.length.Location = new System.Drawing.Point(189, 62);
+            this.length.Name = "length";
+            this.length.Size = new System.Drawing.Size(48, 29);
+            this.length.TabIndex = 5;
+            this.length.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
+            this.length.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label3
             // 
@@ -150,13 +151,13 @@
             this.Controls.Add(this.savePassword);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.length);
             this.Controls.Add(this.label2);
             this.Name = "FormGenerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password Generator";
             this.Load += new System.EventHandler(this.FormGenerator_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.length)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -168,7 +169,7 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown length;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label generatedPassword;
         private System.Windows.Forms.Button generatePassword;

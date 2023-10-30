@@ -32,7 +32,7 @@
             this.newPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabel_item = new System.Windows.Forms.DataGridView();
             this.insertItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabel_item)).BeginInit();
             this.SuspendLayout();
@@ -42,7 +42,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newPasswordToolStripMenuItem,
             this.insertItemToolStripMenuItem,
-            this.refreshToolStripMenuItem});
+            this.deleteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(656, 31);
@@ -70,16 +70,16 @@
             // insertItemToolStripMenuItem
             // 
             this.insertItemToolStripMenuItem.Name = "insertItemToolStripMenuItem";
-            this.insertItemToolStripMenuItem.Size = new System.Drawing.Size(104, 27);
-            this.insertItemToolStripMenuItem.Text = "Insert item";
+            this.insertItemToolStripMenuItem.Size = new System.Drawing.Size(65, 27);
+            this.insertItemToolStripMenuItem.Text = "Insert";
             this.insertItemToolStripMenuItem.Click += new System.EventHandler(this.insertItemToolStripMenuItem_Click);
             // 
-            // refreshToolStripMenuItem
+            // deleteToolStripMenuItem
             // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(78, 27);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(71, 27);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -108,6 +108,6 @@
         private System.Windows.Forms.ToolStripMenuItem newPasswordToolStripMenuItem;
         private System.Windows.Forms.DataGridView tabel_item;
         private System.Windows.Forms.ToolStripMenuItem insertItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
