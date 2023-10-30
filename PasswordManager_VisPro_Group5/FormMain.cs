@@ -46,7 +46,7 @@ namespace PasswordManager_VisPro_Group5
 
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
+        public void LoadData()
         {
             try
             {
@@ -59,13 +59,13 @@ namespace PasswordManager_VisPro_Group5
                 adapter.Fill(ds);
                 koneksi.Close();
 
-                dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.Columns[0].Width = 200;
-                dataGridView1.Columns[0].HeaderText = "Title";
-                dataGridView1.Columns[1].Width = 200;
-                dataGridView1.Columns[1].HeaderText = "Username/Email";
-                dataGridView1.Columns[2].Width = 200;
-                dataGridView1.Columns[2].HeaderText = "Password";
+                tabel_item.DataSource = ds.Tables[0];
+                tabel_item.Columns[0].Width = 200;
+                tabel_item.Columns[0].HeaderText = "Title";
+                tabel_item.Columns[1].Width = 200;
+                tabel_item.Columns[1].HeaderText = "Username/Email";
+                tabel_item.Columns[2].Width = 200;
+                tabel_item.Columns[2].HeaderText = "Password";
             }
             catch (Exception ex)
             {
@@ -73,7 +73,23 @@ namespace PasswordManager_VisPro_Group5
             }
         }
 
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void insertItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            New_item new_item = new New_item();
+            new_item.Show();
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

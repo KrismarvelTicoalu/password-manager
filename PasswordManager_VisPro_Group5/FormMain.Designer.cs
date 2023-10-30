@@ -30,18 +30,22 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabel_item = new System.Windows.Forms.DataGridView();
+            this.insertItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabel_item)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newPasswordToolStripMenuItem});
+            this.newPasswordToolStripMenuItem,
+            this.insertItemToolStripMenuItem,
+            this.refreshToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(656, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(656, 31);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -50,25 +54,39 @@
             // 
             this.newPasswordToolStripMenuItem.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newPasswordToolStripMenuItem.Name = "newPasswordToolStripMenuItem";
-            this.newPasswordToolStripMenuItem.Size = new System.Drawing.Size(138, 25);
+            this.newPasswordToolStripMenuItem.Size = new System.Drawing.Size(138, 27);
             this.newPasswordToolStripMenuItem.Text = "Create password";
             this.newPasswordToolStripMenuItem.Click += new System.EventHandler(this.newPasswordToolStripMenuItem_Click);
             // 
-            // dataGridView1
+            // tabel_item
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 63);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(596, 382);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.tabel_item.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabel_item.Location = new System.Drawing.Point(30, 63);
+            this.tabel_item.Name = "tabel_item";
+            this.tabel_item.Size = new System.Drawing.Size(596, 382);
+            this.tabel_item.TabIndex = 9;
+            this.tabel_item.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // insertItemToolStripMenuItem
+            // 
+            this.insertItemToolStripMenuItem.Name = "insertItemToolStripMenuItem";
+            this.insertItemToolStripMenuItem.Size = new System.Drawing.Size(104, 27);
+            this.insertItemToolStripMenuItem.Text = "Insert item";
+            this.insertItemToolStripMenuItem.Click += new System.EventHandler(this.insertItemToolStripMenuItem_Click);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(78, 27);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 496);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tabel_item);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -78,7 +96,7 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabel_item)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,6 +106,8 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newPasswordToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tabel_item;
+        private System.Windows.Forms.ToolStripMenuItem insertItemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }
