@@ -24,9 +24,9 @@ namespace PasswordManager_VisPro_Group5
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (txtUsernameOrEmail.Text == "avel")
+            if (txtUsernameOrEmail.Text == "")
             {
-                if (txtPassword.Text == "12345")
+                if (txtPassword.Text == "")
                 {
                     FormMain formMain = new FormMain();
                     formMain.Show();
@@ -37,9 +37,9 @@ namespace PasswordManager_VisPro_Group5
                     MessageBox.Show("Wrong password");
                 }
             }
-            else if (txtPassword.Text == "12345")
+            else if (txtPassword.Text == "")
             {
-                if (txtUsernameOrEmail.Text == "avel")
+                if (txtUsernameOrEmail.Text == "")
                 {
                     FormMain formMain = new FormMain();
                     formMain.Show();
