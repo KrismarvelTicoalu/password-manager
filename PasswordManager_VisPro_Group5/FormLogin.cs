@@ -74,5 +74,10 @@ namespace PasswordManager_VisPro_Group5
                 txtPassword.UseSystemPasswordChar = true;
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
