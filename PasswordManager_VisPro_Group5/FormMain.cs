@@ -173,6 +173,11 @@ namespace PasswordManager_VisPro_Group5
 
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
            
