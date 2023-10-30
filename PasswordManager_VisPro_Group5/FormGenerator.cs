@@ -17,6 +17,25 @@ namespace PasswordManager_VisPro_Group5
             InitializeComponent();
         }
 
+        private string generate_password()
+        {
+            Random res = new Random();
+
+            String str = "abcdefghijklmnopqrstuvwxyz";
+            int size = Convert.ToInt32(length.Text);
+
+            string ran = "";
+
+            for (int i = 0; i < size; i++)
+            {
+                int x = res.Next(26);
+
+                ran = ran + str[x];
+            }
+
+            return ran;
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -34,7 +53,7 @@ namespace PasswordManager_VisPro_Group5
 
         private void button1_Click(object sender, EventArgs e)
         {
-            generatedPassword.Text = "r3W@47V78M";
+            generatedPassword.Text = generate_password();
             savePassword.Visible = true;
         }
 
@@ -51,6 +70,11 @@ namespace PasswordManager_VisPro_Group5
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
