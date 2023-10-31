@@ -38,7 +38,7 @@ namespace PasswordManager_VisPro_Group5
         {
             try
             {
-                query = string.Format("select * from tbl_user where `Username/Email` = '{0}' and Password = '{1}'", txtUsernameOrEmail.Text, txtPassword.Text);
+                query = string.Format("select * from tbl_user where `Username` = '{0}' and `Master Password` = '{1}'", txtUsernameOrEmail.Text, txtPassword.Text);
                 ds.Clear();
                 koneksi.Open();
                 perintah = new MySqlCommand(query, koneksi);
@@ -51,8 +51,8 @@ namespace PasswordManager_VisPro_Group5
                     foreach (DataRow kolom in ds.Tables[0].Rows)
                     {
                         string sandi, namaPengguna;
-                        namaPengguna = kolom["Username/Email"].ToString();
-                        sandi = kolom["Password"].ToString();
+                        namaPengguna = kolom["Username"].ToString();
+                        sandi = kolom["Master Password"].ToString();
                         if (sandi == txtPassword.Text && namaPengguna == txtUsernameOrEmail.Text)
                         {
                             FormMain formMain = new FormMain();
@@ -107,6 +107,13 @@ namespace PasswordManager_VisPro_Group5
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormSignUp formSignUp = new FormSignUp();
+            formSignUp.Show();
+            this.Hide();
         }
 
         private void FormLogin_Paint(object sender, PaintEventArgs e)
