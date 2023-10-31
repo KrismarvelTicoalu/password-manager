@@ -50,7 +50,7 @@ namespace PasswordManager_VisPro_Group5
 
                 try
                 {
-                    query = string.Format("insert into `tbl_user` (`Username/Email`, `Password`) VALUES ('{0}','{1}')", txtNewUsername.Text, txtMasterPassword.Text);
+                    query = string.Format("insert into `tbl_user` (`Username`, `Master Password`) VALUES ('{0}','{1}')", txtNewUsername.Text, txtMasterPassword.Text);
 
                     koneksi.Open();
                     perintah = new MySqlCommand(query, koneksi);
