@@ -109,6 +109,13 @@ namespace PasswordManager_VisPro_Group5
 
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormSignUp formSignUp = new FormSignUp();
+            formSignUp.Show();
+            this.Hide();
+        }
+
         private void FormLogin_Paint(object sender, PaintEventArgs e)
         {
             // Create a rounded rectangle
