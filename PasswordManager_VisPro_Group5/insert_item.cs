@@ -101,6 +101,11 @@ namespace PasswordManager_VisPro_Group5
 
         }
 
+        private void btnPaste_Click(object sender, EventArgs e)
+        {
+            txtPassword.Text = Clipboard.GetText();
+        }
+
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
