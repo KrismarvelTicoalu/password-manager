@@ -38,6 +38,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.copyPassword = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.isIncludeNumbers = new System.Windows.Forms.CheckBox();
+            this.isIncludeCapital = new System.Windows.Forms.CheckBox();
+            this.isIncludeSymbols = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.length)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +51,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(32, 62);
+            this.label2.Location = new System.Drawing.Point(27, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 25);
             this.label2.TabIndex = 3;
@@ -73,9 +76,9 @@
             this.length.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(213)))), ((int)(((byte)(61)))));
             this.length.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.length.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.length.Location = new System.Drawing.Point(189, 62);
+            this.length.Location = new System.Drawing.Point(184, 71);
             this.length.Name = "length";
-            this.length.Size = new System.Drawing.Size(48, 25);
+            this.length.Size = new System.Drawing.Size(58, 25);
             this.length.TabIndex = 5;
             this.length.Value = new decimal(new int[] {
             10,
@@ -121,9 +124,9 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(213)))), ((int)(((byte)(61)))));
             this.button2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(71, 242);
+            this.button2.Location = new System.Drawing.Point(80, 387);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 35);
+            this.button2.Size = new System.Drawing.Size(106, 35);
             this.button2.TabIndex = 9;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = false;
@@ -136,9 +139,9 @@
             this.groupBox1.Controls.Add(this.generatedPassword);
             this.groupBox1.Controls.Add(this.generatePassword);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(26, 113);
+            this.groupBox1.Location = new System.Drawing.Point(21, 284);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(479, 61);
+            this.groupBox1.Size = new System.Drawing.Size(489, 61);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -148,9 +151,9 @@
             this.copyPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.copyPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(213)))), ((int)(((byte)(61)))));
             this.copyPassword.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.copyPassword.Location = new System.Drawing.Point(267, 242);
+            this.copyPassword.Location = new System.Drawing.Point(276, 387);
             this.copyPassword.Name = "copyPassword";
-            this.copyPassword.Size = new System.Drawing.Size(201, 35);
+            this.copyPassword.Size = new System.Drawing.Size(180, 35);
             this.copyPassword.TabIndex = 11;
             this.copyPassword.Text = "Copy password";
             this.copyPassword.UseVisualStyleBackColor = false;
@@ -171,13 +174,55 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // isIncludeNumbers
+            // 
+            this.isIncludeNumbers.AutoSize = true;
+            this.isIncludeNumbers.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isIncludeNumbers.ForeColor = System.Drawing.Color.White;
+            this.isIncludeNumbers.Location = new System.Drawing.Point(32, 118);
+            this.isIncludeNumbers.Name = "isIncludeNumbers";
+            this.isIncludeNumbers.Size = new System.Drawing.Size(113, 29);
+            this.isIncludeNumbers.TabIndex = 13;
+            this.isIncludeNumbers.Text = "Numbers";
+            this.isIncludeNumbers.UseVisualStyleBackColor = true;
+            this.isIncludeNumbers.CheckedChanged += new System.EventHandler(this.isIncludeNumbers_CheckedChanged);
+            // 
+            // isIncludeCapital
+            // 
+            this.isIncludeCapital.AutoSize = true;
+            this.isIncludeCapital.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isIncludeCapital.ForeColor = System.Drawing.Color.White;
+            this.isIncludeCapital.Location = new System.Drawing.Point(32, 177);
+            this.isIncludeCapital.Name = "isIncludeCapital";
+            this.isIncludeCapital.Size = new System.Drawing.Size(152, 29);
+            this.isIncludeCapital.TabIndex = 14;
+            this.isIncludeCapital.Text = "Capital letters";
+            this.isIncludeCapital.UseVisualStyleBackColor = true;
+            this.isIncludeCapital.CheckedChanged += new System.EventHandler(this.isIncludeCapital_CheckedChanged);
+            // 
+            // isIncludeSymbols
+            // 
+            this.isIncludeSymbols.AutoSize = true;
+            this.isIncludeSymbols.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isIncludeSymbols.ForeColor = System.Drawing.Color.White;
+            this.isIncludeSymbols.Location = new System.Drawing.Point(32, 230);
+            this.isIncludeSymbols.Name = "isIncludeSymbols";
+            this.isIncludeSymbols.Size = new System.Drawing.Size(106, 29);
+            this.isIncludeSymbols.TabIndex = 15;
+            this.isIncludeSymbols.Text = "Symbols";
+            this.isIncludeSymbols.UseVisualStyleBackColor = true;
+            this.isIncludeSymbols.CheckedChanged += new System.EventHandler(this.isIncludeSymbols_CheckedChanged);
+            // 
             // FormGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(163)))));
-            this.ClientSize = new System.Drawing.Size(526, 302);
+            this.ClientSize = new System.Drawing.Size(536, 465);
             this.ControlBox = false;
+            this.Controls.Add(this.isIncludeSymbols);
+            this.Controls.Add(this.isIncludeCapital);
+            this.Controls.Add(this.isIncludeNumbers);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.copyPassword);
             this.Controls.Add(this.groupBox1);
@@ -210,5 +255,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button copyPassword;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.CheckBox isIncludeNumbers;
+        private System.Windows.Forms.CheckBox isIncludeCapital;
+        private System.Windows.Forms.CheckBox isIncludeSymbols;
     }
 }
