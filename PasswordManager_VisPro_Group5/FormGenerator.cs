@@ -12,23 +12,46 @@ namespace PasswordManager_VisPro_Group5
 {
     public partial class FormGenerator : Form
     {
+        bool includeNumbers, includeCapital, includeSymbols;
+
         public FormGenerator()
         {
             InitializeComponent();
         }
 
-        private string generate_password()
+        private string generate_password(bool isIncludeNumbers, bool isIncludeCapital, bool isIncludeSymbols)
         {
+
             Random res = new Random();
 
-            String str = "abcdefghijklmnopqrstuvwxyz0123456789";
+            String str = "abcdefghijklmnopqrstuvwxyz";
+            
+            // check if user wants to include numbers
+            if (isIncludeNumbers == true )
+            {
+                str += "0123456789";
+            }
+
+            // check if user wants to include capital letters
+            if (isIncludeCapital == true)
+            {
+                str += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            }
+
+            // check if user wants to include symbols
+            if (isIncludeSymbols == true )
+            {
+                str += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+            }
+
+
             int size = Convert.ToInt32(length.Text);
 
             string ran = "";
 
             for (int i = 0; i < size; i++)
             {
-                int x = res.Next(36);
+                int x = res.Next(str.Length);
 
                 ran = ran + str[x];
             }
@@ -53,7 +76,7 @@ namespace PasswordManager_VisPro_Group5
 
         private void button1_Click(object sender, EventArgs e)
         {
-            generatedPassword.Text = generate_password();
+            generatedPassword.Text = generate_password(includeNumbers, includeCapital, includeSymbols);
             copyPassword.Visible = true;
         }
 
@@ -101,6 +124,42 @@ namespace PasswordManager_VisPro_Group5
             path.CloseFigure();
 
             this.Region = new Region(path);
+        }
+
+        private void isIncludeNumbers_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isIncludeNumbers.Checked == true)
+            {
+                includeNumbers = true;
+            }
+            else
+            {
+                includeNumbers = false;
+            }
+        }
+
+        private void isIncludeSymbols_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isIncludeSymbols.Checked == true)
+            {
+                includeSymbols = true;
+            }
+            else
+            {
+                includeSymbols = false;
+            }
+        }
+
+        private void isIncludeCapital_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isIncludeCapital.Checked == true)
+            {
+                includeCapital = true;
+            }
+            else
+            {
+                includeCapital = false;
+            }
         }
     }
 }
