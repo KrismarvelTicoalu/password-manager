@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tabel_item = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCreatePassword = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.btnCreatePassword = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtUsername = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tabel_item)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -61,36 +61,36 @@
             this.tabel_item.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tabel_item.BackgroundColor = System.Drawing.Color.White;
             this.tabel_item.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabel_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tabel_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tabel_item.ColumnHeadersHeight = 45;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tabel_item.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tabel_item.DefaultCellStyle = dataGridViewCellStyle2;
             this.tabel_item.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabel_item.EnableHeadersVisualStyles = false;
             this.tabel_item.Location = new System.Drawing.Point(210, 100);
             this.tabel_item.Name = "tabel_item";
             this.tabel_item.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabel_item.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tabel_item.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.tabel_item.RowHeadersVisible = false;
             this.tabel_item.Size = new System.Drawing.Size(963, 644);
             this.tabel_item.TabIndex = 9;
@@ -112,24 +112,21 @@
             this.panel1.TabIndex = 11;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // btnCreatePassword
+            // btnExit
             // 
-            this.btnCreatePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(163)))));
-            this.btnCreatePassword.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCreatePassword.FlatAppearance.BorderSize = 0;
-            this.btnCreatePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreatePassword.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePassword.ForeColor = System.Drawing.Color.White;
-            this.btnCreatePassword.Location = new System.Drawing.Point(0, 194);
-            this.btnCreatePassword.Name = "btnCreatePassword";
-            this.btnCreatePassword.Size = new System.Drawing.Size(210, 62);
-            this.btnCreatePassword.TabIndex = 9;
-            this.btnCreatePassword.Text = "Create Password";
-            this.btnCreatePassword.UseVisualStyleBackColor = false;
-            this.btnCreatePassword.Click += new System.EventHandler(this.button1_Click_1);
-            this.btnCreatePassword.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.btnCreatePassword.MouseLeave += new System.EventHandler(this.btnCreatePassword_MouseLeave);
-            this.btnCreatePassword.MouseHover += new System.EventHandler(this.btnCreatePassword_MouseHover);
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(163)))));
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(0, 673);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(210, 71);
+            this.btnExit.TabIndex = 14;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnDelete
             // 
@@ -163,28 +160,36 @@
             this.btnInsert.UseVisualStyleBackColor = false;
             this.btnInsert.Click += new System.EventHandler(this.button3_Click);
             // 
+            // btnCreatePassword
+            // 
+            this.btnCreatePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(163)))));
+            this.btnCreatePassword.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCreatePassword.FlatAppearance.BorderSize = 0;
+            this.btnCreatePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreatePassword.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreatePassword.ForeColor = System.Drawing.Color.White;
+            this.btnCreatePassword.Location = new System.Drawing.Point(0, 194);
+            this.btnCreatePassword.Name = "btnCreatePassword";
+            this.btnCreatePassword.Size = new System.Drawing.Size(210, 62);
+            this.btnCreatePassword.TabIndex = 9;
+            this.btnCreatePassword.Text = "Create Password";
+            this.btnCreatePassword.UseVisualStyleBackColor = false;
+            this.btnCreatePassword.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnCreatePassword.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
+            this.btnCreatePassword.MouseLeave += new System.EventHandler(this.btnCreatePassword_MouseLeave);
+            this.btnCreatePassword.MouseHover += new System.EventHandler(this.btnCreatePassword_MouseHover);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(213)))), ((int)(((byte)(61)))));
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.txtUsername);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(210, 194);
             this.panel3.TabIndex = 13;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(50, 145);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Username";
             // 
             // pictureBox1
             // 
@@ -195,6 +200,18 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.AutoSize = true;
+            this.txtUsername.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.ForeColor = System.Drawing.Color.Black;
+            this.txtUsername.Location = new System.Drawing.Point(50, 145);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(101, 25);
+            this.txtUsername.TabIndex = 0;
+            this.txtUsername.Text = "Username";
+            this.txtUsername.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -218,22 +235,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Dashboard";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(163)))));
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(0, 673);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(210, 71);
-            this.btnExit.TabIndex = 14;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // FormMain
             // 
@@ -269,7 +270,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnCreatePassword;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label txtUsername;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
