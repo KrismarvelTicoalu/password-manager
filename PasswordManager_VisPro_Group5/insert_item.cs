@@ -20,8 +20,10 @@ namespace PasswordManager_VisPro_Group5
 
         private DataSet ds = new DataSet();
         private string alamat, query;
-        public New_item()
+        private int id;
+        public New_item(int userid)
         {
+            id = userid;
             alamat = "server=localhost; database=db_password; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace PasswordManager_VisPro_Group5
         {
             try
             {
-                query = string.Format("insert into `tbl_item` (`Title`, `Username/Email`, `Password`) VALUES ('{0}','{1}', '{2}')", txtTitle.Text, txtUsernameEmail.Text, txtPassword.Text);
+                query = string.Format("insert into `tbl_item` (`Title`, `Username/Email`, `Password`, `UserID`) VALUES ('{0}','{1}', '{2}', '{3}')", txtTitle.Text, txtUsernameEmail.Text, txtPassword.Text, id);
 
                 koneksi.Open();
                 perintah = new MySqlCommand(query, koneksi);

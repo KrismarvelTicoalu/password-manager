@@ -38,7 +38,7 @@ namespace PasswordManager_VisPro_Group5
         {
             try
             {
-                query = string.Format("select * from tbl_user where `Username` = '{0}' and `Master Password` = '{1}'", txtUsernameOrEmail.Text, txtPassword.Text);
+             query = string.Format("select * from tbl_user where `Username` = '{0}' and `Master Password` = '{1}'", txtUsernameOrEmail.Text, txtPassword.Text);
                 ds.Clear();
                 koneksi.Open();
                 perintah = new MySqlCommand(query, koneksi);
@@ -55,7 +55,7 @@ namespace PasswordManager_VisPro_Group5
                         sandi = kolom["Master Password"].ToString();
                         if (sandi == txtPassword.Text && namaPengguna == txtUsernameOrEmail.Text)
                         {
-                            FormMain formMain = new FormMain();
+                            FormMain formMain = new FormMain(namaPengguna);
                             formMain.Show();
                             this.Hide();
                         }
@@ -76,7 +76,7 @@ namespace PasswordManager_VisPro_Group5
                 MessageBox.Show(ex.ToString());
             }
         }
-
+   
         private void FormLogin_Load(object sender, EventArgs e)
         {
             txtPassword.UseSystemPasswordChar = true;
