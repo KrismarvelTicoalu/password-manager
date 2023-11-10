@@ -36,6 +36,7 @@
             this.txtUsernameEmail = new System.Windows.Forms.TextBox();
             this.addItem = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnPaste = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -44,7 +45,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(93, 86);
+            this.label2.Location = new System.Drawing.Point(77, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 25);
             this.label2.TabIndex = 3;
@@ -57,7 +58,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(93, 139);
+            this.label1.Location = new System.Drawing.Point(77, 140);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 25);
             this.label1.TabIndex = 4;
@@ -69,7 +70,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(93, 194);
+            this.label3.Location = new System.Drawing.Point(77, 195);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 25);
             this.label3.TabIndex = 5;
@@ -79,7 +80,7 @@
             // 
             this.txtTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(329, 87);
+            this.txtTitle.Location = new System.Drawing.Point(313, 88);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(176, 26);
             this.txtTitle.TabIndex = 6;
@@ -88,7 +89,7 @@
             // 
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(329, 195);
+            this.txtPassword.Location = new System.Drawing.Point(313, 196);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(176, 26);
             this.txtPassword.TabIndex = 7;
@@ -98,7 +99,7 @@
             // 
             this.txtUsernameEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUsernameEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsernameEmail.Location = new System.Drawing.Point(329, 143);
+            this.txtUsernameEmail.Location = new System.Drawing.Point(313, 144);
             this.txtUsernameEmail.Name = "txtUsernameEmail";
             this.txtUsernameEmail.Size = new System.Drawing.Size(176, 26);
             this.txtUsernameEmail.TabIndex = 8;
@@ -133,12 +134,25 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnPaste
+            // 
+            this.btnPaste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(213)))), ((int)(((byte)(61)))));
+            this.btnPaste.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaste.Location = new System.Drawing.Point(508, 197);
+            this.btnPaste.Name = "btnPaste";
+            this.btnPaste.Size = new System.Drawing.Size(74, 25);
+            this.btnPaste.TabIndex = 11;
+            this.btnPaste.Text = "Paste";
+            this.btnPaste.UseVisualStyleBackColor = false;
+            this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
+            // 
             // New_item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(163)))));
             this.ClientSize = new System.Drawing.Size(594, 337);
+            this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.addItem);
             this.Controls.Add(this.txtUsernameEmail);
@@ -168,5 +182,6 @@
         private System.Windows.Forms.TextBox txtUsernameEmail;
         private System.Windows.Forms.Button addItem;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnPaste;
     }
 }

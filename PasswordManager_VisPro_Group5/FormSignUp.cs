@@ -71,9 +71,10 @@ namespace PasswordManager_VisPro_Group5
                         MessageBox.Show("Insert data Error");
                     }
                 }
-                catch (Exception ex)
+                catch (MySql.Data.MySqlClient.MySqlException)
                 {
-                    MessageBox.Show(ex.ToString());
+                    koneksi.Close();
+                    MessageBox.Show("Your username already registered");
                 }
             }
         }
