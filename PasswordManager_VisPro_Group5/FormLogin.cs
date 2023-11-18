@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,7 +39,10 @@ namespace PasswordManager_VisPro_Group5
         {
             try
             {
-             query = string.Format("select * from tbl_user where `Username` = '{0}' and `Master Password` = '{1}'", txtUsernameOrEmail.Text, txtPassword.Text);
+                WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
+                string currentWindowsUser = windowsIdentity.Name;
+
+                query = string.Format("select * from tbl_user where `Username` = '{0}' and `MasterPassword` = '{1}'", txtUsernameOrEmail.Text, txtPassword.Text);
                 ds.Clear();
                 koneksi.Open();
                 perintah = new MySqlCommand(query, koneksi);
@@ -50,14 +54,23 @@ namespace PasswordManager_VisPro_Group5
                 {
                     foreach (DataRow kolom in ds.Tables[0].Rows)
                     {
-                        string sandi, namaPengguna;
+                        string sandi, namaPengguna, identitasWindows;
                         namaPengguna = kolom["Username"].ToString();
-                        sandi = kolom["Master Password"].ToString();
+                        sandi = kolom["MasterPassword"].ToString();
+                        identitasWindows = kolom["WindowsIdentity"].ToString();
+                        identitasWindows = identitasWindows.Replace("\\\\", "\\");
                         if (sandi == txtPassword.Text && namaPengguna == txtUsernameOrEmail.Text)
                         {
-                            FormMain formMain = new FormMain(namaPengguna);
-                            formMain.Show();
-                            this.Hide();
+                            if (identitasWindows == currentWindowsUser)
+                            {
+                                FormMain formMain = new FormMain(namaPengguna, identitasWindows);
+                                formMain.Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please log in to your windows account first");
+                            }
                         }
                         else
                         {

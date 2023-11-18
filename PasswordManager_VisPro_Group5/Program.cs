@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Principal;
 
 namespace PasswordManager_VisPro_Group5
 {
@@ -18,5 +22,8 @@ namespace PasswordManager_VisPro_Group5
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormLogin());
         }
+
+        
+
     }
 }
