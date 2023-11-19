@@ -111,6 +111,27 @@ namespace PasswordManager_VisPro_Group5
             txtPassword.Text = Clipboard.GetText();
         }
 
+        private void txtTitle_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormGenerator generator = new FormGenerator();
+            generator.ShowDialog();
+        }
+
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
