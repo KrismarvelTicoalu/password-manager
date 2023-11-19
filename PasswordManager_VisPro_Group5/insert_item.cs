@@ -44,7 +44,7 @@ namespace PasswordManager_VisPro_Group5
             try
             {
                 id = id.Replace("\\", "\\\\");
-                byte[] encrypted_password = Protection.ProtectData(txtPassword.Text);
+                string encrypted_password = Convert.ToBase64String(Protection.ProtectData(txtPassword.Text));
 
                 query = string.Format("insert into `tbl_item` (`Title`, `Username/Email`, `Password`, `WindowsIdentity`) VALUES ('{0}','{1}', '{2}', '{3}')", txtTitle.Text, txtUsernameEmail.Text, encrypted_password, id);
 

@@ -31,14 +31,14 @@ namespace PasswordManager_VisPro_Group5
             return data;
         }
 
-        // Example usage
+        ////Example usage
         //string originalData = "SensitiveUserData";
 
-        // Protect the data
+        ////Protect the data
         //byte[] encryptedData = ProtectData(originalData);
         //MessageBox.Show($"Encrypted Data: {Convert.ToBase64String(encryptedData)}");
 
-        // Unprotect the data
+        ////Unprotect the data
         //string decryptedData = UnprotectData(encryptedData);
         //MessageBox.Show($"Decrypted Data: {decryptedData}");
     }

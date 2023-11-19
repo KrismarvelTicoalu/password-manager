@@ -78,7 +78,9 @@ namespace PasswordManager_VisPro_Group5
                         }
                         else
                         {
-                            byte[] encrypted_data = (byte[])row["Password"];
+                            string encrypted_data = row["Password"].ToString();
+                            byte[] encrypted_password = Convert.FromBase64String(encrypted_data);
+
                             if (encrypted_data.Length == 0)
                             {
                                 Console.WriteLine("Encrypted data is empty");
@@ -87,7 +89,8 @@ namespace PasswordManager_VisPro_Group5
                             {
                                 try
                                 {
-                                    row["Password"] = Protection.UnprotectData(encrypted_data);
+                                    
+                                    row["Password"] = Protection.UnprotectData(encrypted_password);
                                 }
                                 catch (Exception ex)
                                 {

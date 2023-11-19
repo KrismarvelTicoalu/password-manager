@@ -22,8 +22,5 @@ namespace PasswordManager_VisPro_Group5
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormLogin());
         }
-
-        
-
     }
 }
