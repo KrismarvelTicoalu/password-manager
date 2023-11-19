@@ -40,7 +40,7 @@ namespace PasswordManager_VisPro_Group5
         {
             koneksi.Open();
             string encrypted_password = Convert.ToBase64String(Protection.ProtectData(txtPassword.Text));
-            string query = string.Format("UPDATE tbl_item SET `Title` = '{0}', `Username/Email` = '{1}', `Password` = '{2}' WHERE `Title` = '{3}'", txtTitle.Text, txtUsernameEmail.Text, encrypted_password, Title);
+            string query = string.Format("UPDATE tbl_item SET `Title` = '{0}', `Username/Email` = '{1}', `Password` = '{2}', `URL` = '{3}' WHERE `Title` = '{4}'", txtTitle.Text, txtUsernameEmail.Text, encrypted_password, txtUrl.Text, Title);
             MySqlCommand perintah = new MySqlCommand(query, koneksi);
             MySqlDataAdapter adapter = new MySqlDataAdapter(perintah);
             DataSet ds = new DataSet();
@@ -75,6 +75,26 @@ namespace PasswordManager_VisPro_Group5
         {
             FormGenerator generator = new FormGenerator();
             generator.ShowDialog();
+        }
+
+        private void linkLabel1_Paint(object sender, PaintEventArgs e)
+        {
+            RoundedCorner.CreateRoundedCorner(this);
+        }
+
+        private void txtUrl_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPasteUrl_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void FormUpdate_Load(object sender, EventArgs e)
