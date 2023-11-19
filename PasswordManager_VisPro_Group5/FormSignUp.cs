@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -47,10 +48,14 @@ namespace PasswordManager_VisPro_Group5
             }
             else
             {
+                // Get the current Windows user
+                WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
+                string currentWindowsUser = windowsIdentity.Name;
+                currentWindowsUser = currentWindowsUser.Replace("\\", "\\\\");
 
                 try
                 {
-                    query = string.Format("insert into `tbl_user` (`Username`, `Master Password`) VALUES ('{0}','{1}')", txtNewUsername.Text, txtMasterPassword.Text);
+                    query = string.Format("insert into `tbl_user` (`Username`, `MasterPassword` , `WindowsIdentity`) VALUES ('{0}','{1}','{2}')", txtNewUsername.Text, txtMasterPassword.Text, currentWindowsUser);
 
                     koneksi.Open();
                     perintah = new MySqlCommand(query, koneksi);

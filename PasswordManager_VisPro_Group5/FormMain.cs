@@ -24,53 +24,17 @@ namespace PasswordManager_VisPro_Group5
         private DataSet ds2 = new DataSet();
         private string alamat, query;
 
-        private int userId;
-        public FormMain(string username)
+        private string Username, Identity;
+
+        public FormMain(string username, string identity)
         {
             alamat = "server=localhost; database=db_password; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
 
-            try
-            {
-                query = string.Format("select * from tbl_user where `Username` = '{0}'", username);
-                ds1.Clear();
-                koneksi.Open();
-                perintah = new MySqlCommand(query, koneksi);
-                adapter = new MySqlDataAdapter(perintah);
-                perintah.ExecuteNonQuery();
-                adapter.Fill(ds1);
-                koneksi.Close();
-                if (ds1.Tables[0].Rows.Count > 0)
-                {
-                    foreach (DataRow kolom in ds1.Tables[0].Rows)
-                    {
-                        string idh, namaPengguna;
-                        int id;
-                        namaPengguna = kolom["Username"].ToString();
-                        idh = kolom["UserID"].ToString();
-                        id = Convert.ToInt32(idh);
-                        if (namaPengguna == username)
-                        {
-                            txtUsername.Text = namaPengguna;
-                            userId = id;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Anda salah input password");
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Username not found, please sign up first");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            txtUsername.Text = username;
+            Username = username;
+            Identity = identity;
         }
 
         private void newPasswordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -91,15 +55,53 @@ namespace PasswordManager_VisPro_Group5
 
         public void LoadData()
         {
+            New_item insert_item = new New_item(Identity);
+
             try
             {
                 koneksi.Open();
-                query = string.Format("Select `Title`, `Username/Email`, `Password` from tbl_item where UserID = {0}", userId);
+                query = string.Format("Select `Title`, `Username/Email`, `Password` from tbl_item where `WindowsIdentity` = '{0}'", Identity.Replace("\\", "\\\\"));
                 perintah = new MySqlCommand(query, koneksi);
                 adapter = new MySqlDataAdapter(perintah);
                 perintah.ExecuteNonQuery();
                 ds2.Clear();
                 adapter.Fill(ds2);
+
+                // Decrypt the 'encrypted_password' column
+                if (ds2.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds2.Tables[0].Rows)
+                    {
+                        if (row["Password"] is DBNull)
+                        {
+                            Console.WriteLine("Password is DB null");
+                        }
+                        else
+                        {
+                            string encrypted_data = row["Password"].ToString();
+                            byte[] encrypted_password = Convert.FromBase64String(encrypted_data);
+
+                            if (encrypted_data.Length == 0)
+                            {
+                                Console.WriteLine("Encrypted data is empty");
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    
+                                    row["Password"] = Protection.UnprotectData(encrypted_password);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error decrypting data: " + ex.Message);
+                                }
+                            }
+                        }
+                    }
+
+                }
+
                 koneksi.Close();
 
                 
@@ -173,7 +175,7 @@ namespace PasswordManager_VisPro_Group5
 
         private void button3_Click(object sender, EventArgs e)
         {
-            New_item new_item = new New_item(userId);
+            New_item new_item = new New_item(Identity);
             new_item.Show();
         }
 
