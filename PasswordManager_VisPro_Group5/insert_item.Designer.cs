@@ -37,6 +37,7 @@
             this.addItem = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPaste = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label2
@@ -63,6 +64,7 @@
             this.label1.Size = new System.Drawing.Size(156, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "Username/Email";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -75,6 +77,7 @@
             this.label3.Size = new System.Drawing.Size(96, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Password";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtTitle
             // 
@@ -84,6 +87,7 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(176, 26);
             this.txtTitle.TabIndex = 6;
+            this.txtTitle.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 
             // txtPassword
             // 
@@ -146,12 +150,27 @@
             this.btnPaste.UseVisualStyleBackColor = false;
             this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(213)))), ((int)(((byte)(61)))));
+            this.linkLabel1.Location = new System.Drawing.Point(310, 225);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(109, 17);
+            this.linkLabel1.TabIndex = 26;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Create password";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // New_item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(163)))));
             this.ClientSize = new System.Drawing.Size(594, 337);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.addItem);
@@ -183,5 +202,6 @@
         private System.Windows.Forms.Button addItem;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnPaste;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

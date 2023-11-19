@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,16 @@ namespace PasswordManager_VisPro_Group5
             txtUsername.Text = username;
             Username = username;
             Identity = identity;
+
+            string picturePath = GetUserAccountPicturePath();
+            if (!string.IsNullOrEmpty(picturePath))
+            {
+                profilePicture.Image = Image.FromFile(picturePath);
+            }
+            else
+            {
+                Console.WriteLine("No account picture found.");
+            }
         }
 
         private void newPasswordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,19 +181,19 @@ namespace PasswordManager_VisPro_Group5
         private void button1_Click_1(object sender, EventArgs e)
         {
             FormGenerator formGenerator = new FormGenerator();
-            formGenerator.Show();
+            formGenerator.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             New_item new_item = new New_item(Identity);
-            new_item.Show();
+            new_item.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Delete_item delete_item = new Delete_item();
-            delete_item.Show();
+            delete_item.ShowDialog();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -230,7 +241,18 @@ namespace PasswordManager_VisPro_Group5
             
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            FormSearch form_search = new FormSearch();
+            form_search.ShowDialog();
+        }
+
         private void button1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
@@ -238,6 +260,14 @@ namespace PasswordManager_VisPro_Group5
         private void button1_Click(object sender, EventArgs e)
         {
            
+        }
+
+        public static string GetUserAccountPicturePath()
+        {
+            string userName = Environment.UserName;
+            string userAccountPicturesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Microsoft\\Windows\\AccountPictures");
+            string[] files = Directory.GetFiles(userAccountPicturesPath, userName + "*");
+            return files.Length > 0 ? files[0] : null;
         }
     }
 }
