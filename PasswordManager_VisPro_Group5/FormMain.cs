@@ -31,17 +31,7 @@ namespace PasswordManager_VisPro_Group5
 
             txtUsername.Text = username;
             Username = username;
-            Userid = userid;
-
-            string picturePath = GetUserAccountPicturePath();
-            if (!string.IsNullOrEmpty(picturePath))
-            {
-                profilePicture.Image = Image.FromFile(picturePath);
-            }
-            else
-            {
-                Console.WriteLine("No account picture found.");
-            }            
+            Userid = userid;    
             
         }
 
@@ -212,7 +202,7 @@ namespace PasswordManager_VisPro_Group5
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Delete_item delete_item = new Delete_item();
+            Delete_item delete_item = new Delete_item(Userid);
             delete_item.ShowDialog();
         }
 
@@ -263,7 +253,7 @@ namespace PasswordManager_VisPro_Group5
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            FormSearch form_search = new FormSearch();
+            FormSearch form_search = new FormSearch(Userid);
             form_search.ShowDialog();
         }
 
@@ -282,12 +272,5 @@ namespace PasswordManager_VisPro_Group5
            
         }
 
-        public static string GetUserAccountPicturePath()
-        {
-            string userName = Environment.UserName;
-            string userAccountPicturesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Microsoft\\Windows\\AccountPictures");
-            string[] files = Directory.GetFiles(userAccountPicturesPath, userName + "*");
-            return files.Length > 0 ? files[0] : null;
-        }
     }
 }
