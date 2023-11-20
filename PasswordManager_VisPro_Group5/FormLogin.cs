@@ -41,25 +41,57 @@ namespace PasswordManager_VisPro_Group5
             {
                 WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
                 string currentWindowsUser = windowsIdentity.Name;
+                currentWindowsUser = currentWindowsUser.Replace("AVEL\\", "");
 
-                query = string.Format("select * from tbl_user where `Username` = '{0}' and `MasterPassword` = '{1}'", txtUsernameOrEmail.Text, txtPassword.Text);
+                query = string.Format("select * from tbl_user where `Username` = '{0}'", txtUsernameOrEmail.Text, txtPassword.Text);
                 ds.Clear();
                 koneksi.Open();
                 perintah = new MySqlCommand(query, koneksi);
                 adapter = new MySqlDataAdapter(perintah);
                 perintah.ExecuteNonQuery();
                 adapter.Fill(ds);
-                koneksi.Close();
+                
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow kolom in ds.Tables[0].Rows)
                     {
                         string sandi, namaPengguna, identitasWindows;
                         namaPengguna = kolom["Username"].ToString();
+
+                        //decrypt the master password
+                        if (kolom["MasterPassword"] is DBNull)
+                        {
+                            Console.WriteLine("Password is DB null");
+                        }
+                        else
+                        {
+                            string encrypted_data = kolom["MasterPassword"].ToString();
+                            byte[] encrypted_password = Convert.FromBase64String(encrypted_data);
+
+                            if (encrypted_data.Length == 0)
+                            {
+                                Console.WriteLine("Encrypted data is empty");
+                            }
+                            else
+                            {
+                                try
+                                {
+
+                                    kolom["MasterPassword"] = Protection.UnprotectData(encrypted_password);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error decrypting data: " + ex.Message);
+                                }
+                            }
+                        }
                         sandi = kolom["MasterPassword"].ToString();
+
                         identitasWindows = kolom["WindowsIdentity"].ToString();
-                        identitasWindows = identitasWindows.Replace("\\\\", "\\");
-                        if (sandi == txtPassword.Text && namaPengguna == txtUsernameOrEmail.Text)
+
+                        koneksi.Close();
+
+                        if (sandi == txtPassword.Text)
                         {
                             if (identitasWindows == currentWindowsUser)
                             {
@@ -82,6 +114,7 @@ namespace PasswordManager_VisPro_Group5
                 else
                 {
                     MessageBox.Show("Username not found, please sign up first");
+                    koneksi.Close();
                 }
             }
             catch (Exception ex)
