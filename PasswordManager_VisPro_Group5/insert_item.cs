@@ -43,10 +43,11 @@ namespace PasswordManager_VisPro_Group5
         {
             try
             {
-                id = id.Replace("\\", "\\\\");
+                id = id.Replace("AVEL\\", "");
+
                 string encrypted_password = Convert.ToBase64String(Protection.ProtectData(txtPassword.Text));
 
-                query = string.Format("insert into `tbl_item` (`Title`, `Username/Email`, `Password`, `URL`, `WindowsIdentity`) VALUES ('{0}','{1}', '{2}', '{3}', '{4}')", txtTitle.Text, txtUsernameEmail.Text, encrypted_password, txtUrl.Text, id);
+                query = string.Format("insert into `tbl_item` (`Title`, `UsernameOrEmail`, `Password`, `URL`, `WindowsIdentity`) VALUES ('{0}','{1}', '{2}', '{3}', '{4}')", txtTitle.Text, txtUsernameEmail.Text, encrypted_password, txtUrl.Text, id);
 
                 koneksi.Open();
                 perintah = new MySqlCommand(query, koneksi);

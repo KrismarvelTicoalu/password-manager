@@ -51,11 +51,12 @@ namespace PasswordManager_VisPro_Group5
                 // Get the current Windows user
                 WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
                 string currentWindowsUser = windowsIdentity.Name;
-                currentWindowsUser = currentWindowsUser.Replace("\\", "\\\\");
+                currentWindowsUser = currentWindowsUser.Replace("AVEL\\", "");
 
                 try
                 {
-                    query = string.Format("insert into `tbl_user` (`Username`, `MasterPassword` , `WindowsIdentity`) VALUES ('{0}','{1}','{2}')", txtNewUsername.Text, txtMasterPassword.Text, currentWindowsUser);
+                    string encrypted_password = Convert.ToBase64String(Protection.ProtectData(txtMasterPassword.Text));
+                    query = string.Format("insert into `tbl_user` (`Username`, `MasterPassword` , `WindowsIdentity`) VALUES ('{0}','{1}','{2}')", txtNewUsername.Text, encrypted_password, currentWindowsUser);
 
                     koneksi.Open();
                     perintah = new MySqlCommand(query, koneksi);

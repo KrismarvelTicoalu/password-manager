@@ -79,7 +79,7 @@ namespace PasswordManager_VisPro_Group5
             try
             {
                 koneksi.Open();
-                query = string.Format("Select `Title`, `Username/Email`, `Password`, `URL` from tbl_item where `WindowsIdentity` = '{0}'", Identity.Replace("\\", "\\\\"));
+                query = string.Format("Select `Title`, `UsernameOrEmail`, `Password`, `URL` from tbl_item where `WindowsIdentity` = '{0}'", Identity.Replace("\\", "\\\\"));
                 perintah = new MySqlCommand(query, koneksi);
                 adapter = new MySqlDataAdapter(perintah);
                 perintah.ExecuteNonQuery();
