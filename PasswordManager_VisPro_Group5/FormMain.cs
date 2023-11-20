@@ -17,25 +17,21 @@ namespace PasswordManager_VisPro_Group5
 {
     public partial class FormMain : Form
     {
+        Sql sql = new Sql();
+
         private MySqlConnection koneksi;
-        private MySqlDataAdapter adapter;
-        private MySqlCommand perintah;
 
-        private DataSet ds1 = new DataSet();
-        private DataSet ds2 = new DataSet();
-        private string alamat, query;
+        private string Username, Userid;
 
-        private string Username, Identity;
-
-        public FormMain(string username, string identity)
+        public FormMain(string username, string userid)
         {
-            alamat = "server=localhost; database=db_password; username=root; password=;";
-            koneksi = new MySqlConnection(alamat);
+            koneksi = sql.SqlSetup("localhost", "db_password", "root", "");
+
             InitializeComponent();
 
             txtUsername.Text = username;
             Username = username;
-            Identity = identity;
+            Userid = userid;
 
             string picturePath = GetUserAccountPicturePath();
             if (!string.IsNullOrEmpty(picturePath))
@@ -45,15 +41,8 @@ namespace PasswordManager_VisPro_Group5
             else
             {
                 Console.WriteLine("No account picture found.");
-            }
-
-            // Fetch the schema of the table and create columns
-            string query = "SELECT * FROM tbl_item WHERE 1=0";
-            MySqlCommand cmd = new MySqlCommand(query, koneksi);
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.FillSchema(dt, SchemaType.Source);
-            tabel_item.DataSource = dt;
+            }            
+            
         }
 
         private void newPasswordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,22 +63,20 @@ namespace PasswordManager_VisPro_Group5
 
         public void LoadData()
         {
-            New_item insert_item = new New_item(Identity);
+            New_item insert_item = new New_item(Userid);
 
             try
             {
-                koneksi.Open();
-                query = string.Format("Select `Title`, `UsernameOrEmail`, `Password`, `URL` from tbl_item where `WindowsIdentity` = '{0}'", Identity.Replace("\\", "\\\\"));
-                perintah = new MySqlCommand(query, koneksi);
-                adapter = new MySqlDataAdapter(perintah);
-                perintah.ExecuteNonQuery();
-                ds2.Clear();
-                adapter.Fill(ds2);
+                string query = string.Format("Select `Title`, `UsernameOrEmail`, `Password`, `URL` from tbl_item where `UserID` = '{0}'", Userid);
+
+                var (adapter, res) = sql.SqlQuery(query);
+
+                DataSet ds = sql.SqlDatabase(adapter);
 
                 // Decrypt the 'encrypted_password' column
-                if (ds2.Tables[0].Rows.Count > 0)
+                if (ds.Tables[0].Rows.Count > 0)
                 {
-                    foreach (DataRow row in ds2.Tables[0].Rows)
+                    foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         if (row["Password"] is DBNull)
                         {
@@ -125,7 +112,7 @@ namespace PasswordManager_VisPro_Group5
 
                 
 
-                tabel_item.DataSource = ds2.Tables[0];
+                tabel_item.DataSource = ds.Tables[0];
                 tabel_item.Columns[0].HeaderText = "Title";
                 tabel_item.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 tabel_item.Columns[1].HeaderText = "Username/Email";
@@ -219,7 +206,7 @@ namespace PasswordManager_VisPro_Group5
 
         private void button3_Click(object sender, EventArgs e)
         {
-            New_item new_item = new New_item(Identity);
+            New_item new_item = new New_item(Userid);
             new_item.ShowDialog();
         }
 

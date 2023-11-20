@@ -21,9 +21,9 @@ namespace PasswordManager_VisPro_Group5
         private DataSet ds = new DataSet();
         private string alamat, query;
         private string id;
-        public New_item(string identity)
+        public New_item(string userid)
         {
-            id = identity;
+            id = userid;
             alamat = "server=localhost; database=db_password; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
@@ -43,11 +43,10 @@ namespace PasswordManager_VisPro_Group5
         {
             try
             {
-                id = id.Replace("AVEL\\", "");
 
                 string encrypted_password = Convert.ToBase64String(Protection.ProtectData(txtPassword.Text));
 
-                query = string.Format("insert into `tbl_item` (`Title`, `UsernameOrEmail`, `Password`, `URL`, `WindowsIdentity`) VALUES ('{0}','{1}', '{2}', '{3}', '{4}')", txtTitle.Text, txtUsernameEmail.Text, encrypted_password, txtUrl.Text, id);
+                query = string.Format("insert into `tbl_item` (`Title`, `UsernameOrEmail`, `Password`, `URL`, `UserID`) VALUES ('{0}','{1}', '{2}', '{3}', '{4}')", txtTitle.Text, txtUsernameEmail.Text, encrypted_password, txtUrl.Text, id);
 
                 koneksi.Open();
                 perintah = new MySqlCommand(query, koneksi);

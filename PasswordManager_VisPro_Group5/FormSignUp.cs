@@ -16,15 +16,12 @@ namespace PasswordManager_VisPro_Group5
     public partial class FormSignUp : Form
     {
         private MySqlConnection koneksi;
-        private MySqlDataAdapter adapter;
-        private MySqlCommand perintah;
 
-        private DataSet ds = new DataSet();
-        private string alamat, query;
+        Sql sql = new Sql();
         public FormSignUp()
         {
-            alamat = "server=localhost; database=db_password; username=root; password=;";
-            koneksi = new MySqlConnection(alamat);
+            koneksi = sql.SqlSetup("localhost", "db_password", "root", "");
+
             InitializeComponent();
         }
 
@@ -51,19 +48,16 @@ namespace PasswordManager_VisPro_Group5
                 // Get the current Windows user
                 WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
                 string currentWindowsUser = windowsIdentity.Name;
-                currentWindowsUser = currentWindowsUser.Replace("AVEL\\", "");
+                currentWindowsUser = currentWindowsUser.Replace("\\", "\\\\");
 
                 try
                 {
                     string encrypted_password = Convert.ToBase64String(Protection.ProtectData(txtMasterPassword.Text));
-                    query = string.Format("insert into `tbl_user` (`Username`, `MasterPassword` , `WindowsIdentity`) VALUES ('{0}','{1}','{2}')", txtNewUsername.Text, encrypted_password, currentWindowsUser);
+                    string query = string.Format("insert into `tbl_user` (`Username`, `MasterPassword` , `WindowsIdentity`) VALUES ('{0}','{1}','{2}')", txtNewUsername.Text, encrypted_password, currentWindowsUser);
 
-                    koneksi.Open();
-                    perintah = new MySqlCommand(query, koneksi);
-                    adapter = new MySqlDataAdapter(perintah);
-                    int res = perintah.ExecuteNonQuery();
 
-                    koneksi.Close();
+                    var (adapter, res) = sql.SqlQuery(query);
+
                     if (res == 1)
                     {
                         MessageBox.Show("Account successfully created");
@@ -80,7 +74,7 @@ namespace PasswordManager_VisPro_Group5
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {
                     koneksi.Close();
-                    MessageBox.Show("Your username already registered");
+                    MessageBox.Show("You've registered already. Try again if it's actually your first time registering");
                 }
             }
         }
