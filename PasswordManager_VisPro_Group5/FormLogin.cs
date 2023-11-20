@@ -41,25 +41,57 @@ namespace PasswordManager_VisPro_Group5
             {
                 WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
                 string currentWindowsUser = windowsIdentity.Name;
+                currentWindowsUser = currentWindowsUser.Replace("AVEL\\", "");
 
-                query = string.Format("select * from tbl_user where `Username` = '{0}' and `MasterPassword` = '{1}'", txtUsernameOrEmail.Text, txtPassword.Text);
+                query = string.Format("select * from tbl_user where `Username` = '{0}'", txtUsernameOrEmail.Text, txtPassword.Text);
                 ds.Clear();
                 koneksi.Open();
                 perintah = new MySqlCommand(query, koneksi);
                 adapter = new MySqlDataAdapter(perintah);
                 perintah.ExecuteNonQuery();
                 adapter.Fill(ds);
-                koneksi.Close();
+                
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow kolom in ds.Tables[0].Rows)
                     {
                         string sandi, namaPengguna, identitasWindows;
                         namaPengguna = kolom["Username"].ToString();
+
+                        //decrypt the master password
+                        if (kolom["MasterPassword"] is DBNull)
+                        {
+                            Console.WriteLine("Password is DB null");
+                        }
+                        else
+                        {
+                            string encrypted_data = kolom["MasterPassword"].ToString();
+                            byte[] encrypted_password = Convert.FromBase64String(encrypted_data);
+
+                            if (encrypted_data.Length == 0)
+                            {
+                                Console.WriteLine("Encrypted data is empty");
+                            }
+                            else
+                            {
+                                try
+                                {
+
+                                    kolom["MasterPassword"] = Protection.UnprotectData(encrypted_password);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error decrypting data: " + ex.Message);
+                                }
+                            }
+                        }
                         sandi = kolom["MasterPassword"].ToString();
+
                         identitasWindows = kolom["WindowsIdentity"].ToString();
-                        identitasWindows = identitasWindows.Replace("\\\\", "\\");
-                        if (sandi == txtPassword.Text && namaPengguna == txtUsernameOrEmail.Text)
+
+                        koneksi.Close();
+
+                        if (sandi == txtPassword.Text)
                         {
                             if (identitasWindows == currentWindowsUser)
                             {
@@ -82,6 +114,7 @@ namespace PasswordManager_VisPro_Group5
                 else
                 {
                     MessageBox.Show("Username not found, please sign up first");
+                    koneksi.Close();
                 }
             }
             catch (Exception ex)
@@ -131,20 +164,7 @@ namespace PasswordManager_VisPro_Group5
 
         private void FormLogin_Paint(object sender, PaintEventArgs e)
         {
-            // Create a rounded rectangle
-            Rectangle rect = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
-            int radius = 20; // Adjust this value to control the roundness
-
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            path.StartFigure();
-            path.AddArc(rect.Left, rect.Top, radius * 2, radius * 2, 180, 90);
-            path.AddLine(rect.Left + radius, rect.Top, rect.Right - radius, rect.Top);
-            path.AddArc(rect.Right - radius * 2, rect.Top, radius * 2, radius * 2, 270, 90);
-            path.AddLine(rect.Right, rect.Top + radius, rect.Right, rect.Bottom - radius);
-            path.AddArc(rect.Right - radius * 2, rect.Bottom - radius * 2, radius * 2, radius * 2, 0, 90);
-            path.AddLine(rect.Right - radius, rect.Bottom, rect.Left + radius, rect.Bottom);
-            path.AddArc(rect.Left, rect.Bottom - radius * 2, radius * 2, radius * 2, 90, 90);
-            path.CloseFigure();
+            RoundedCorner.CreateRoundedCorner(this);
         }
     }
 }

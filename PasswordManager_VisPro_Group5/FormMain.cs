@@ -46,6 +46,14 @@ namespace PasswordManager_VisPro_Group5
             {
                 Console.WriteLine("No account picture found.");
             }
+
+            // Fetch the schema of the table and create columns
+            string query = "SELECT * FROM tbl_item WHERE 1=0";
+            MySqlCommand cmd = new MySqlCommand(query, koneksi);
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.FillSchema(dt, SchemaType.Source);
+            tabel_item.DataSource = dt;
         }
 
         private void newPasswordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,7 +79,7 @@ namespace PasswordManager_VisPro_Group5
             try
             {
                 koneksi.Open();
-                query = string.Format("Select `Title`, `Username/Email`, `Password` from tbl_item where `WindowsIdentity` = '{0}'", Identity.Replace("\\", "\\\\"));
+                query = string.Format("Select `Title`, `UsernameOrEmail`, `Password`, `URL` from tbl_item where `WindowsIdentity` = '{0}'", Identity.Replace("\\", "\\\\"));
                 perintah = new MySqlCommand(query, koneksi);
                 adapter = new MySqlDataAdapter(perintah);
                 perintah.ExecuteNonQuery();
@@ -124,8 +132,18 @@ namespace PasswordManager_VisPro_Group5
                 tabel_item.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 tabel_item.Columns[2].HeaderText = "Password";
                 tabel_item.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                tabel_item.Columns[3].HeaderText = "URL";
+                tabel_item.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-               
+
+                foreach (DataGridViewRow row in tabel_item.Rows)
+                {
+                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                    linkCell.Value = row.Cells["URL"].Value;
+                    row.Cells["URL"] = linkCell;
+                }
+
+
 
             }
             catch (Exception ex)
@@ -155,7 +173,22 @@ namespace PasswordManager_VisPro_Group5
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            // Check if the clicked cell is a DataGridViewLinkCell
+            if (tabel_item[e.ColumnIndex, e.RowIndex] is DataGridViewLinkCell)
+            {
+                // Get the URL from the cell value
+                string url = tabel_item[e.ColumnIndex, e.RowIndex].Value.ToString();
 
+                // Open the URL in the default browser
+                System.Diagnostics.Process.Start(url);
+            }
+            else if(tabel_item[e.ColumnIndex, e.RowIndex] is DataGridViewTextBoxCell)
+            {
+                string text = tabel_item[e.ColumnIndex, e.RowIndex].Value.ToString();
+
+                Clipboard.SetText(text);
+                MessageBox.Show("Copied");
+            }
         }
 
         private void insertItemToolStripMenuItem_Click(object sender, EventArgs e)
