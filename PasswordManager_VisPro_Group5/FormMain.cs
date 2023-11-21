@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.Shared.Json;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -29,10 +30,13 @@ namespace PasswordManager_VisPro_Group5
 
             InitializeComponent();
 
+            //set the username
             txtUsername.Text = username;
             Username = username;
-            Userid = userid;    
-            
+
+            //set the user id
+            Userid = userid;
+
         }
 
         private void newPasswordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -264,7 +268,21 @@ namespace PasswordManager_VisPro_Group5
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            // Create a new OpenFileDialog
+            OpenFileDialog openFileDialog = new OpenFileDialog();
 
+            // Set the filter to only show image files
+            openFileDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
+
+            // Show the dialog and get result
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Load the selected image into the PictureBox
+                profilePicture.Image = new Bitmap(openFileDialog.FileName);
+
+                // Optionally, you can set the PictureBox to size mode to stretch, so the image will resize to fit the PictureBox
+                profilePicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

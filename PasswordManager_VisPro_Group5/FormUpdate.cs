@@ -45,8 +45,15 @@ namespace PasswordManager_VisPro_Group5
             MySqlCommand perintah = new MySqlCommand(query, koneksi);
             MySqlDataAdapter adapter = new MySqlDataAdapter(perintah);
             DataSet ds = new DataSet();
-            adapter.Fill(ds);
+            int rowsUpdated = adapter.Fill(ds);
             koneksi.Close();
+
+            // check if there is any row updated
+            if (rowsUpdated > 0)
+            {
+                MessageBox.Show("Data is updated");
+            }
+
 
             FormMain mainForm = (FormMain)Application.OpenForms["FormMain"];
             if (mainForm != null)
