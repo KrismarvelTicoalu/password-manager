@@ -21,12 +21,16 @@ namespace PasswordManager_VisPro_Group5
         private DataSet ds = new DataSet();
         private string alamat, query;
 
-        public FormSearch()
+        private string Userid;
+
+        public FormSearch(string userid)
         {
             alamat = "server=localhost; database=db_password; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
 
             InitializeComponent();
+
+            Userid = userid;
         }
 
         private void FormSearch_Paint(object sender, PaintEventArgs e)
@@ -49,7 +53,7 @@ namespace PasswordManager_VisPro_Group5
             try
             {
                 koneksi.Open();
-                string query = string.Format("SELECT * FROM tbl_item WHERE Title = '{0}'", txtTitle.Text);
+                string query = string.Format("SELECT * FROM tbl_item WHERE Title = '{0}' AND `UserID` = '{1}'", txtTitle.Text, Userid);
                 MySqlCommand perintah = new MySqlCommand(query, koneksi);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(perintah);
                 DataSet ds = new DataSet();
@@ -60,7 +64,7 @@ namespace PasswordManager_VisPro_Group5
                 StringBuilder resultMessage = new StringBuilder();
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    FormUpdate formUpdate = new FormUpdate(txtTitle.Text);
+                    FormUpdate formUpdate = new FormUpdate(txtTitle.Text, Userid);
                     this.Close();
                     formUpdate.ShowDialog();
 

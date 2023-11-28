@@ -22,6 +22,8 @@ namespace PasswordManager_VisPro_Group5
 
         private DataSet ds = new DataSet();
         private string alamat, query;
+
+        private string userid;
         public FormLogin()
         {
             alamat = "server=localhost; database=db_password; username=root; password=;";
@@ -41,7 +43,6 @@ namespace PasswordManager_VisPro_Group5
             {
                 WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
                 string currentWindowsUser = windowsIdentity.Name;
-                currentWindowsUser = currentWindowsUser.Replace("AVEL\\", "");
 
                 query = string.Format("select * from tbl_user where `Username` = '{0}'", txtUsernameOrEmail.Text, txtPassword.Text);
                 ds.Clear();
@@ -95,7 +96,8 @@ namespace PasswordManager_VisPro_Group5
                         {
                             if (identitasWindows == currentWindowsUser)
                             {
-                                FormMain formMain = new FormMain(namaPengguna, identitasWindows);
+                                userid = kolom["UserID"].ToString();
+                                FormMain formMain = new FormMain(namaPengguna, userid);
                                 formMain.Show();
                                 this.Hide();
                             }

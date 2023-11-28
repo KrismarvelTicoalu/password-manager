@@ -20,11 +20,14 @@ namespace PasswordManager_VisPro_Group5
 
         private DataSet ds = new DataSet();
         private string alamat, query;
-        public Delete_item()
+
+        private string Userid;
+        public Delete_item(string userid)
         {
             alamat = "server=localhost; database=db_password; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
+            Userid = userid;
         }
 
         private void txtTitle_TextChanged(object sender, EventArgs e)
@@ -52,7 +55,7 @@ namespace PasswordManager_VisPro_Group5
             try
             {
                 koneksi.Open();
-                query = string.Format("delete from tbl_item where Title = '{0}'", txtTitle.Text);
+                query = string.Format("DELETE FROM tbl_item WHERE Title = '{0}' AND `UserID` = {1}", txtTitle.Text, Userid);
                 perintah = new MySqlCommand(query, koneksi);
                 adapter = new MySqlDataAdapter(perintah);
                 perintah.ExecuteNonQuery();

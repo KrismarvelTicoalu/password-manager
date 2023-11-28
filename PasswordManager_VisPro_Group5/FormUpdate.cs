@@ -20,8 +20,8 @@ namespace PasswordManager_VisPro_Group5
         private DataSet ds = new DataSet();
         private string alamat, query;
 
-        private string Title;
-        public FormUpdate(string title)
+        private string Title, Userid;
+        public FormUpdate(string title, string userid)
         {
             alamat = "server=localhost; database=db_password; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
@@ -29,6 +29,7 @@ namespace PasswordManager_VisPro_Group5
             InitializeComponent();
 
             Title = title;
+            Userid = userid;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -40,12 +41,19 @@ namespace PasswordManager_VisPro_Group5
         {
             koneksi.Open();
             string encrypted_password = Convert.ToBase64String(Protection.ProtectData(txtPassword.Text));
-            string query = string.Format("UPDATE tbl_item SET `Title` = '{0}', `UsernameOrEmail` = '{1}', `Password` = '{2}', `URL` = '{3}' WHERE `Title` = '{4}'", txtTitle.Text, txtUsernameEmail.Text, encrypted_password, txtUrl.Text, Title);
+            string query = string.Format("UPDATE tbl_item SET `Title` = '{0}', `UsernameOrEmail` = '{1}', `Password` = '{2}', `URL` = '{3}' WHERE `Title` = '{4}' AND `UserID` = '{5}'", txtTitle.Text, txtUsernameEmail.Text, encrypted_password, txtUrl.Text, Title, Userid);
             MySqlCommand perintah = new MySqlCommand(query, koneksi);
             MySqlDataAdapter adapter = new MySqlDataAdapter(perintah);
             DataSet ds = new DataSet();
-            adapter.Fill(ds);
+            int rowsUpdated = adapter.Fill(ds);
             koneksi.Close();
+
+            // check if there is any row updated
+            if (rowsUpdated > 0)
+            {
+                MessageBox.Show("Data is updated");
+            }
+
 
             FormMain mainForm = (FormMain)Application.OpenForms["FormMain"];
             if (mainForm != null)
@@ -100,7 +108,7 @@ namespace PasswordManager_VisPro_Group5
         private void FormUpdate_Load(object sender, EventArgs e)
         {
             koneksi.Open();
-            string query = string.Format("SELECT * FROM tbl_item WHERE Title = '{0}'", Title);
+            string query = string.Format("SELECT * FROM tbl_item WHERE Title = '{0}' AND `UserID` = '{1}'", Title, Userid);
             MySqlCommand perintah = new MySqlCommand(query, koneksi);
             MySqlDataAdapter adapter = new MySqlDataAdapter(perintah);
             DataSet ds = new DataSet();
