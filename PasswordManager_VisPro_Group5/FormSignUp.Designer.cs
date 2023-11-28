@@ -37,6 +37,8 @@
             this.txtMasterPassword = new System.Windows.Forms.TextBox();
             this.txtNewMasterPassword = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkShowPassword = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnClose
@@ -61,6 +63,8 @@
             this.txtConfirmMasterPassword.Name = "txtConfirmMasterPassword";
             this.txtConfirmMasterPassword.Size = new System.Drawing.Size(148, 26);
             this.txtConfirmMasterPassword.TabIndex = 27;
+            this.txtConfirmMasterPassword.UseSystemPasswordChar = true;
+            this.txtConfirmMasterPassword.TextChanged += new System.EventHandler(this.txtConfirmMasterPassword_TextChanged);
             // 
             // label4
             // 
@@ -119,6 +123,8 @@
             this.txtMasterPassword.Name = "txtMasterPassword";
             this.txtMasterPassword.Size = new System.Drawing.Size(148, 26);
             this.txtMasterPassword.TabIndex = 22;
+            this.txtMasterPassword.UseSystemPasswordChar = true;
+            this.txtMasterPassword.TextChanged += new System.EventHandler(this.txtMasterPassword_TextChanged);
             // 
             // txtNewMasterPassword
             // 
@@ -140,9 +146,38 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(68, 111);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 25);
+            this.label1.Size = new System.Drawing.Size(101, 25);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Username/Email";
+            this.label1.Text = "Username";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // checkShowPassword
+            // 
+            this.checkShowPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkShowPassword.AutoSize = true;
+            this.checkShowPassword.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkShowPassword.ForeColor = System.Drawing.Color.White;
+            this.checkShowPassword.Location = new System.Drawing.Point(333, 191);
+            this.checkShowPassword.Name = "checkShowPassword";
+            this.checkShowPassword.Size = new System.Drawing.Size(121, 21);
+            this.checkShowPassword.TabIndex = 28;
+            this.checkShowPassword.Text = "show password";
+            this.checkShowPassword.UseVisualStyleBackColor = true;
+            this.checkShowPassword.CheckedChanged += new System.EventHandler(this.checkShowPassword_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(333, 250);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(121, 21);
+            this.checkBox1.TabIndex = 29;
+            this.checkBox1.Text = "show password";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // FormSignUp
             // 
@@ -150,6 +185,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(163)))));
             this.ClientSize = new System.Drawing.Size(543, 388);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkShowPassword);
             this.Controls.Add(this.txtConfirmMasterPassword);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCreateAccount);
@@ -181,5 +218,7 @@
         private System.Windows.Forms.TextBox txtMasterPassword;
         private System.Windows.Forms.Label txtNewMasterPassword;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkShowPassword;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

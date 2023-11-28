@@ -17,24 +17,13 @@ namespace PasswordManager_VisPro_Group5
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            CrystalReport1 cr = new CrystalReport1();
 
-        }
-
-        private void btnView_Click(object sender, EventArgs e)
-        {
-            CrystalReport1 cr1 = new CrystalReport1();
-
-            cr1.SetParameterValue("Nama user windows", textBox1.Text);
-            crystalReportViewer1.ReportSource = cr1;
+            cr.SetParameterValue("user id", textBox1.Text);
+            crystalReportViewer1.ReportSource = cr;
             crystalReportViewer1.Refresh();
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

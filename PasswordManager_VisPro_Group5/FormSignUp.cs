@@ -88,5 +88,44 @@ namespace PasswordManager_VisPro_Group5
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkShowPassword.Checked == true)
+            {
+                txtMasterPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtMasterPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                txtConfirmMasterPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtConfirmMasterPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void txtConfirmMasterPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMasterPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
